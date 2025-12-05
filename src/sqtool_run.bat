@@ -1,5 +1,15 @@
 @echo off
-SET ZENDESK_SUBDOMAIN=enter subdomain here
-SET ZENDESK_EMAIL=enter email of user who created zendesk api token here
-SET ZENDESK_TOKEN=enter zendesk api token here
+echo sqtool was run on %DATE% at %TIME% >> "PathToLogFile"
+REM Change the directory to the path containing the virtual environment
+cd "Path to Project"
+REM Activate virtual environment
+call .venv\Scripts\activate.bat
+REM move to folder that contains file, set environmental variables, and run script
+cd src
+SET ZENDESK_SUBDOMAIN=SubDomain
+SET ZENDESK_EMAIL=Email Associated With Token
+SET ZENDESK_TOKEN=Zendesk Token
 python sqtool.py
+REM deactivate environment
+cd ..
+call .venv\Scripts\deactivate.bat

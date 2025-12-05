@@ -3,7 +3,7 @@ File: sqtool.py
 Author: Joshua Pollaci
 Date Created: 10-17-2025
 Last Modified: 11-10-2025
-Version: 2.1.4
+Version: 2.2.4
 Description: 
 Script to manage suspended tickets from a Zendesk subdomain.
 It retrieves all tickets currently in the suspended queue and filters them
@@ -164,6 +164,8 @@ def main():
         deleteTickets(delete_list)
         deleted += len(delete_list)
     #Prints out total deleted and recovered tickets
+    with open('log.txt', 'a') as file:
+        file.write(f"\tRecovered: {recovered} Tickets\n\tDeleted: {deleted} Tickets\n")
     print(f"\nRecovered: {recovered} Tickets\nDeleted: {deleted} Tickets\n")
     
 if __name__ == '__main__':
